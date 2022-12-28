@@ -10,3 +10,9 @@ body {
   margin 30px auto;
   padding: 20px;
 }
+li {
+  display: inline-table;
+  text-decoration: none;
+  font-size: 15px;
+  
+}
