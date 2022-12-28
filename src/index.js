@@ -37,7 +37,6 @@ function showTemp(response) {
   let h1 = document.querySelector("h1");
   h1.innerHTML = `Currently in <strong>${response.data.name}</strong>`;
 }
-navigator.geolocation.getCurrentPosition(locationNow);
 
 function locationNow(position) {
   let lat = position.coords.latitude;
