@@ -1,15 +1,17 @@
+.weatherapp {
+   max-width: 600px;
+  margin 30px auto;
+  padding: 20px;
+}
 h1 {
+  text-align: center;
   font-family: "Quicksand", sans-serif;
 }
 
 body {
   font-family: "Quicksand", sans-serif;
 }
-.weather-app{
-  max-width: 600px;
-  margin 30px auto;
-  padding: 20px;
-}
+
 li {
   display: inline-table;
   text-decoration: none;
@@ -21,5 +23,9 @@ h3{
   font-size: 50px;
 }
 .desciption {
-  font-size: small;
+  font-size: 30px;
+}
+
+.col-sm-9 {
+  padding:5px;
 }
