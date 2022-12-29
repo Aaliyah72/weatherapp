@@ -11,6 +11,8 @@ font-weight: 700,bolder;
 
 body {
 font-family: 'Amatic SC', cursive;
+padding: 181px;
+border-radius: 50%;
 }
 
 
@@ -46,4 +48,18 @@ hr{
 .text-center{
   font-size: 30px;
   font-weight: 700, bold;
+}
+.container{
+  max-width: 648px;
+
+}
+.col {
+  margin-top: 172px;
+
+}
+.submit{
+  border: 2px;
+}
+form {
+  margin-left: 125px;
 }
