@@ -5,12 +5,12 @@
 }
 h1 {
   text-align: center;
-font-family: 'Amatic SC', cursive;
+font-family: 'Concert One', cursive;
 font-weight: 700,bolder;
 }
 
 body {
-font-family: 'Amatic SC', cursive;
+font-family: 'Concert One', cursive;
 padding: 181px;
 border-radius: 50%;
 }
@@ -24,7 +24,7 @@ li {
 }
 h3{
   text-align: center;
-  font-size: 50px;
+  font-size: 30px;
 }
 .desciption {
   font-size: 30px;
@@ -46,7 +46,7 @@ hr{
   box-shadow: #272044;
 }
 .text-center{
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 700, bold;
 }
 .container{
@@ -61,5 +61,6 @@ hr{
   border: 2px;
 }
 form {
-  margin-left: 125px;
+ display:block;
+ margin-left: 87px;
 }
