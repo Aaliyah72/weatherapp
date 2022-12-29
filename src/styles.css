@@ -5,16 +5,18 @@
 }
 h1 {
   text-align: center;
-  font-family: "Quicksand", sans-serif;
+font-family: 'Amatic SC', cursive;
+font-weight: 700,bolder;
 }
 
 body {
-  font-family: "Quicksand", sans-serif;
+font-family: 'Amatic SC', cursive;
 }
+
 
 li {
   display: inline-table;
-  text-decoration: none;
+  text-decoration:;
   font-size: 15px;
   
 }
@@ -40,4 +42,8 @@ h3{
 hr{
   margin-block-end: auto;
   box-shadow: #272044;
+}
+.text-center{
+  font-size: 30px;
+  font-weight: 700, bold;
 }
