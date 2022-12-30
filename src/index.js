@@ -1,12 +1,14 @@
-let now = new Date();
-let h2 = document.querySelector("h2");
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-  let hours = now.getHours();
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
   let days = [
     "Sunday",
     "Monday",
@@ -16,9 +18,17 @@ if (minutes < 10) {
     "Friday",
     "Saturday",
   ];
-  let day = days[now.getDay()];
+  let day = days[date.getDay()];
+  let currentTime = document.querySelector("#current-time");
+  currentTime.innerHTML = `${day} ${hours}:${minutes}`;
+}
 
-  h2.innerHTML = `⌛${day} ${hours}:${minutes}`;
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
 }
 
 let form = document.querySelector("#weather-city");
