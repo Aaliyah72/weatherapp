@@ -25,9 +25,11 @@ li {
 h3{
   text-align: center;
   font-size: 30px;
+  text-transform: capitalize;
 }
 .desciption {
   font-size: 30px;
+  text-transform:capitalize ;
 }
 .card {
   margin-right: auto;
