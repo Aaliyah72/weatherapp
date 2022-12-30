@@ -39,7 +39,7 @@ function showTemp(response) {
   let h1 = document.querySelector("h1");
   h1.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${response.data.name}</strong>`;
   description.innerHTML = `${response.data.weather[0].description}`;
-  humidity.innerHTML = `Humidity: ${response.data.main.humidity}`;
+  humidity.innerHTML = `${response.data.main.humidity}%`;
   console.log(response.data);
 }
 
