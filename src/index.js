@@ -35,19 +35,18 @@ let form = document.querySelector("#weather-city");
 form.addEventListener("submit", newCity);
 
 function newCity(event) {
-  console.log(response.data);
   event.preventDefault();
   let city = document.querySelector("#city-search");
-  let query = `${city.value}`;
+  let cityLocation = `${city.value}`;
   let h1 = document.querySelector("h1");
-  h1.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${query}</strong>`;
-  let apiKey = "827f9a01625aeb3o0572et3c741df379";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${query}&key=${apiKey}`;
+  h1.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${cityLocation}</strong>`;
+  let apiKey = `93d43dfe3b4a950e5b187e5dc313705e`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityLocation}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemp);
 }
 
 function showTemp(response) {
-  let temperature = Math.round(response.data.main.temperature);
+  let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#dummy-temp");
   let description = document.querySelector("#description");
   let humidity = document.querySelector("#humidity");
@@ -65,7 +64,7 @@ function showTemp(response) {
 function locationNow(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
-  let apiKey = "93d43dfe3b4a950e5b187e5dc313705e";
-  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=imperial&appid=${apiKey}`;
+  let apiKey = "827f9a01625aeb3o0572et3c741df379";
+  let url = `https://api.shecodes.io/weather/v1/current?lon=${long}&lat=${lat}&key=${apiKey}`;
   axios.get(url).then(showTemp);
 }
