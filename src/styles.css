@@ -1,68 +1,63 @@
 .weatherapp {
-   max-width: 600px;
-  margin 30px auto;
+  max-width: 600px;
+  margin: 30px auto;
   padding: 20px;
 }
 h1 {
   text-align: center;
-font-family: 'Concert One', cursive;
-font-weight: 700,bolder;
+  font-family: "Concert One", cursive;
+  font-weight: 700, bolder;
 }
 
 body {
-font-family: 'Concert One', cursive;
-padding: 181px;
-border-radius: 50%;
+  font-family: "Concert One", cursive;
+  padding: 181px;
+  border-radius: 50%;
 }
-
 
 li {
   display: inline-table;
-  text-decoration:;
+  text-decoration: ;
   font-size: 15px;
-  
 }
-h3{
+h3 {
   text-align: center;
   font-size: 30px;
   text-transform: capitalize;
 }
 .desciption {
   font-size: 30px;
-  text-transform:capitalize ;
+  text-transform: capitalize;
 }
 .card {
   margin-right: auto;
-  padding: 5px;  
+  padding: 5px;
   border: 2px solid #885df1;
- box-shadow: 3px 3px 3px 3px #272044;
+  box-shadow: 3px 3px 3px 3px #272044;
 }
 .col-sm-9 {
-  padding:5px;
-  box-sizing:border-box;
+  padding: 5px;
+  box-sizing: border-box;
   width: 165px;
-
 }
-hr{
+hr {
   margin-block-end: auto;
   box-shadow: #272044;
 }
-.text-center{
+.text-center {
   font-size: 20px;
   font-weight: 700, bold;
 }
-.container{
+.container {
   max-width: 648px;
-
 }
 .col {
   margin-top: 172px;
-
 }
-.submit{
+.submit {
   border: 2px;
 }
 form {
- display:block;
- margin-left: 87px;
+  display: block;
+  margin-left: 87px;
 }

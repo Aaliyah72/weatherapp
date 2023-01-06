@@ -49,20 +49,21 @@ function showTemp(response) {
   let temperature = Math.round(response.data.temperature.current);
   let temperatureElement = document.querySelector("#dummy-temp");
   let description = document.querySelector("#description");
-  let iconElement = document.querySelector("#icon");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
   let speed = Math.round(response.data.wind.speed);
   temperatureElement.innerHTML = `<strong>°${temperature}</strong>`;
   let h1 = document.querySelector("h1");
+  let img = document.getElementById("#icon-weather");
   h1.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${response.data.city}</strong>`;
   description.innerHTML = `${response.data.condition.description}`;
   humidity.innerHTML = `${response.data.temperature.humidity}`;
   wind.innerHTML = `${speed} Km/H`;
-  iconElement.setAttribute(
+  img.setAttribute(
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
+  img.setAttribute("alt", response.data.condition.icon);
 }
 
 function locationNow(position) {
