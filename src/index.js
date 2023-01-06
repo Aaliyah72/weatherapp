@@ -49,6 +49,7 @@ function showTemp(response) {
   let temperature = Math.round(response.data.temperature.current);
   let temperatureElement = document.querySelector("#dummy-temp");
   let description = document.querySelector("#description");
+  let iconElement = document.querySelector("#icon");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
   let speed = Math.round(response.data.wind.speed);
@@ -58,7 +59,10 @@ function showTemp(response) {
   description.innerHTML = `${response.data.condition.description}`;
   humidity.innerHTML = `${response.data.temperature.humidity}`;
   wind.innerHTML = `${speed} Km/H`;
-  console.log(response.data);
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
 }
 
 function locationNow(position) {
