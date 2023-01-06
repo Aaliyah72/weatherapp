@@ -40,13 +40,13 @@ function newCity(event) {
   let cityLocation = `${city.value}`;
   let h1 = document.querySelector("h1");
   h1.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${cityLocation}</strong>`;
-  let apiKey = `93d43dfe3b4a950e5b187e5dc313705e`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityLocation}&appid=${apiKey}&units=imperial`;
+  let apiKey = `827f9a01625aeb3o0572et3c741df379`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityLocation}&key=${apiKey}`;
   axios.get(apiUrl).then(showTemp);
 }
 
 function showTemp(response) {
-  let temperature = Math.round(response.data.main.temp);
+  let temperature = Math.round(response.data.temperature.current);
   let temperatureElement = document.querySelector("#dummy-temp");
   let description = document.querySelector("#description");
   let humidity = document.querySelector("#humidity");
@@ -54,16 +54,16 @@ function showTemp(response) {
   let speed = Math.round(response.data.wind.speed);
   temperatureElement.innerHTML = `<strong>°${temperature}</strong>`;
   let h1 = document.querySelector("h1");
-  h1.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${response.data.name}</strong>`;
-  description.innerHTML = `${response.data.weather[0].description}`;
-  humidity.innerHTML = `${response.data.main.humidity}`;
+  h1.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${response.data.city}</strong>`;
+  description.innerHTML = `${response.data.condition.description}`;
+  humidity.innerHTML = `${response.data.temperature.humidity}`;
   wind.innerHTML = `${speed} Km/H`;
   console.log(response.data);
 }
 
 function locationNow(position) {
-  let lat = position.coords.latitude;
-  let long = position.coords.longitude;
+  let lat = position.coordinates.latitude;
+  let long = position.coordinates.longitude;
   let apiKey = "827f9a01625aeb3o0572et3c741df379";
   let url = `https://api.shecodes.io/weather/v1/current?lon=${long}&lat=${lat}&key=${apiKey}`;
   axios.get(url).then(showTemp);
