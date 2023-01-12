@@ -44,7 +44,18 @@ function newCity(event) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityLocation}&key=${apiKey}`;
   axios.get(apiUrl).then(showTemp);
 }
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastHTML = ` <div class="col-sm-9">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><strong>Monday</strong></h5>
+        <p class="card-text"> 54°F <i class="fa-solid fa-cloud"></i></p>`;
 
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
 function showTemp(response) {
   let temperature = Math.round(response.data.temperature.current);
   let temperatureElement = document.querySelector("#dummy-temp");
