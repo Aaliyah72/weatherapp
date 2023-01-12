@@ -46,11 +46,21 @@ function newCity(event) {
 }
 function displayForecast() {
   let forecastElement = document.querySelector("#weather-forecast");
-  let forecastHTML = ` <div class="col-sm-9">
+  let forecastHTML = "";
+  let days = ["Monday", "Tuesday", "Wednesday", "Thurday", "Saturday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+     <div class="col-sm-9">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"><strong>Monday</strong></h5>
-        <p class="card-text"> 54°F <i class="fa-solid fa-cloud"></i></p>`;
+        <h5 class="card-title"><strong>${day}</strong></h5>
+        <p class="card-text"> 54°F <i class="fa-solid fa-cloud"></i></p>
+        </div>
+        </div>
+       </div>`;
+  });
 
   forecastElement.innerHTML = forecastHTML;
 }
