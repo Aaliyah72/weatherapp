@@ -54,16 +54,16 @@ function showTemp(response) {
   let speed = Math.round(response.data.wind.speed);
   temperatureElement.innerHTML = `<strong>°${temperature}</strong>`;
   let h1 = document.querySelector("h1");
-  let img = document.getElementById("#icon-weather");
+  let icon = document.querySelector("#icon-weather");
   h1.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${response.data.city}</strong>`;
   description.innerHTML = `${response.data.condition.description}`;
   humidity.innerHTML = `${response.data.temperature.humidity}`;
   wind.innerHTML = `${speed} Km/H`;
-  img.setAttribute(
+  icon.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon_url}.png`
   );
-  img.setAttribute("alt", response.data.condition.icon);
+  icon.setAttribute("alt", response.data.condtion.description);
 }
 
 function locationNow(position) {
