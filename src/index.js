@@ -19,8 +19,8 @@ function formatDate(timestamp) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-  let h2 = document.querySelector("h2");
-  h2.innerHTML = `${day} ${hours}:${minutes}`;
+  let h1 = document.querySelector("h1");
+  h1.innerHTML = `${day} ${hours}:${minutes}`;
 }
 
 function formatDay(timestamp) {
@@ -38,11 +38,18 @@ function newCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city-search");
   let cityLocation = `${city.value}`;
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${cityLocation}</strong>`;
+  let h2 = document.querySelector("h1");
+  h2.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${cityLocation}</strong>`;
   let apiKey = `827f9a01625aeb3o0572et3c741df379`;
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityLocation}&key=${apiKey}`;
   axios.get(apiUrl).then(showTemp);
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = ` 827f9a01625aeb3o0572et3c741df379`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(displayForecast);
 }
 function displayForecast() {
   let forecastElement = document.querySelector("#weather-forecast");
@@ -74,17 +81,14 @@ function showTemp(response) {
   let wind = document.querySelector("#wind");
   let speed = Math.round(response.data.wind.speed);
   temperatureElement.innerHTML = `<strong>°${temperature}</strong>`;
-  let h1 = document.querySelector("h1");
+  let h2 = document.querySelector("h2");
   let icon = document.querySelector("#icon-weather");
-  h1.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${response.data.city}</strong>`;
+  h2.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${response.data.city}</strong>`;
   description.innerHTML = `${response.data.condition.description}`;
   humidity.innerHTML = `${response.data.temperature.humidity}`;
   wind.innerHTML = `${speed} Km/H`;
-  icon.setAttribute(
-    "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon_url}.png`
-  );
-  icon.setAttribute("alt", response.data.condtion.description);
+
+  getForecast(response.data.coordinates);
 }
 
 function locationNow(position) {
