@@ -1,5 +1,5 @@
 function formatDate(timestamp) {
-  let date = new Date(timestamp);
+  let date = newDate(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -38,20 +38,20 @@ function newCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city-search");
   let cityLocation = `${city.value}`;
-  let h2 = document.querySelector("h1");
+  let h2 = document.querySelector("h2");
   h2.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${cityLocation}</strong>`;
   let apiKey = `827f9a01625aeb3o0572et3c741df379`;
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityLocation}&key=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityLocation}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemp);
 }
 
 function getForecast(coordinates) {
   console.log(coordinates);
-  let apiKey = ` 827f9a01625aeb3o0572et3c741df379`;
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apiKey}&units=imperial`;
+  let apiKey = `827f9a01625aeb3o0572et3c741df379`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
 }
-function displayForecast() {
+function displayForecast(response) {
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = "";
   let days = ["Monday", "Tuesday", "Wednesday", "Thurday", "Saturday"];
@@ -70,6 +70,7 @@ function displayForecast() {
   });
 
   forecastElement.innerHTML = forecastHTML;
+  console.log(response.data.daily);
 }
 
 displayForecast();
