@@ -44,6 +44,20 @@ function newCity(event) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityLocation}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemp);
 }
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[day];
+}
 
 function getForecast(coordinates) {
   console.log(coordinates);
@@ -52,18 +66,18 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 function displayForecast(response) {
+  let weeklyWeather = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = "";
-  let days = ["Monday", "Tuesday", "Wednesday", "Thurday", "Saturday"];
-  days.forEach(function (day) {
+  weeklyWeather.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
      <div class="col-sm-9">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"><strong>${day}</strong></h5>
-        <p class="card-text"> 54°F <i class="fa-solid fa-cloud"></i></p>
+        <h5 class="card-title"><strong>${forecastDay.time}</strong></h5>
+        <p class="card-text"> ${forecastDay.temperature.day} <i class="fa-solid fa-cloud"></i></p>
         </div>
         </div>
        </div>`;

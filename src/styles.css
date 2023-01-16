@@ -17,7 +17,7 @@ body {
 
 li {
   display: inline-table;
-  text-decoration: ;
+  text-decoration: underline;
   font-size: 15px;
 }
 h3 {
