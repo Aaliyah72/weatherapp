@@ -1,27 +1,24 @@
-function formatDate(timestamp) {
-  let date = newDate(timestamp);
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
+let now = new Date();
+let h1 = document.querySelector("h1");
+let minutes= now.getMinutes();
+if (minutes < 10) {
     minutes = `0${minutes}`;
-  }
-
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let day = days[date.getDay()];
-  let h1 = document.querySelector("h1");
-  h1.innerHTML = `${day} ${hours}:${minutes}`;
+let hours = now.getHours();
+if (hours < 10) {
+  hours = `0${hours}`;
 }
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let day = days[now.getDay()];
+
+h1.innerHTML = `⌛${day} ${hours}:${min}`;
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -80,7 +77,7 @@ function displayForecast(response) {
         <h5 class="card-title"><strong>${formatDay(
           forecastDay.time
         )}</strong></h5>
-        <p class="card-text">${Math.round(forecastDay.temperature.day)}℉;
+        <p class="card-text">°${Math.round(forecastDay.temperature.day)}
 
         <i class="fa-solid fa-cloud"></i></p>
         </div>
@@ -103,19 +100,12 @@ function showTemp(response) {
   let speed = Math.round(response.data.wind.speed);
   temperatureElement.innerHTML = `<strong>°${temperature}</strong>`;
   let h2 = document.querySelector("h2");
-  let icon = document.querySelector("#icon-weather");
+  let date= document.querySelector("#date")
   h2.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${response.data.city}</strong>`;
   description.innerHTML = `${response.data.condition.description}`;
   humidity.innerHTML = `${response.data.temperature.humidity}`;
   wind.innerHTML = `${speed} Km/H`;
+  date.innerHTML = "Friday 5:00pm";
 
-  getForecast(response.data.coordinates);
-}
-
-function locationNow(position) {
-  let lat = position.coordinates.latitude;
-  let long = position.coordinates.longitude;
-  let apiKey = "827f9a01625aeb3o0572et3c741df379";
-  let url = `https://api.shecodes.io/weather/v1/current?lon=${long}&lat=${lat}&key=${apiKey}`;
-  axios.get(url).then(showTemp);
-}
+  getForecast(response.data);
+  }
