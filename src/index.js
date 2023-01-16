@@ -69,18 +69,24 @@ function displayForecast(response) {
   let weeklyWeather = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = "";
-  weeklyWeather.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `
+  weeklyWeather.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
      <div class="col-sm-9">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"><strong>${forecastDay.time}</strong></h5>
-        <p class="card-text"> ${forecastDay.temperature.day} <i class="fa-solid fa-cloud"></i></p>
+        <h5 class="card-title"><strong>${formatDay(
+          forecastDay.time
+        )}</strong></h5>
+        <p class="card-text">${Math.round(forecastDay.temperature.day)}℉;
+
+        <i class="fa-solid fa-cloud"></i></p>
         </div>
         </div>
        </div>`;
+    }
   });
 
   forecastElement.innerHTML = forecastHTML;
