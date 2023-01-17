@@ -53,15 +53,16 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
   console.log(coordinates);
 }
-function displayForecast(response, index) {
+function displayForecast(response) {
   console.log(response.data.daily);
   let weeklyWeather = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = "";
-  weeklyWeather.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `
+  weeklyWeather.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
      <div class="col-sm-9">
     <div class="card">
       <div class="card-body">
@@ -74,8 +75,9 @@ function displayForecast(response, index) {
         </div>
         </div>
        </div>`;
+    }
   });
-
+  forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
@@ -86,6 +88,7 @@ function showTemp(response) {
   let description = document.querySelector("#description");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
+  let iconElement = document.querySelector("#icon-weather");
   let speed = Math.round(response.data.wind.speed);
   temperatureElement.innerHTML = `<strong>°${temperature}</strong>`;
   let h2 = document.querySelector("h2");
@@ -93,6 +96,7 @@ function showTemp(response) {
   description.innerHTML = `${response.data.condition.description}`;
   humidity.innerHTML = `${response.data.temperature.humidity}`;
   wind.innerHTML = `${speed} Km/H`;
+
   getForecast(response.data.coordinates);
 }
 function locationNow(position) {
