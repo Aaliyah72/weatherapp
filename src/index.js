@@ -1,8 +1,7 @@
 let now = new Date();
 let h1 = document.querySelector("h1");
-let minutes= now.getMinutes();
-if (minutes < 10) {
-    minutes = `0${minutes}`;
+let minutes = now.getMinutes();
+if (minutes < 10) minutes = `0${minutes}`;
 let hours = now.getHours();
 if (hours < 10) {
   hours = `0${hours}`;
@@ -18,15 +17,7 @@ let days = [
 ];
 let day = days[now.getDay()];
 
-h1.innerHTML = `⌛${day} ${hours}:${min}`;
-
-function formatDay(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  return days[day];
-}
+h1.innerHTML = `${day} ${hours}:${minutes}`;
 
 let form = document.querySelector("#weather-city");
 form.addEventListener("submit", newCity);
@@ -57,20 +48,20 @@ function formatDay(timestamp) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = `827f9a01625aeb3o0572et3c741df379`;
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForecast);
+  console.log(coordinates);
 }
-function displayForecast(response) {
+function displayForecast(response, index) {
+  console.log(response.data.daily);
   let weeklyWeather = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = "";
-  weeklyWeather.forEach(function (forecastDay, index) {
-    if (index < 5) {
-      forecastHTML =
-        forecastHTML +
-        `
+  weeklyWeather.forEach(function (forecastDay) {
+    forecastHTML =
+      forecastHTML +
+      `
      <div class="col-sm-9">
     <div class="card">
       <div class="card-body">
@@ -83,11 +74,9 @@ function displayForecast(response) {
         </div>
         </div>
        </div>`;
-    }
   });
 
   forecastElement.innerHTML = forecastHTML;
-  console.log(response.data.daily);
 }
 
 displayForecast();
@@ -100,12 +89,16 @@ function showTemp(response) {
   let speed = Math.round(response.data.wind.speed);
   temperatureElement.innerHTML = `<strong>°${temperature}</strong>`;
   let h2 = document.querySelector("h2");
-  let date= document.querySelector("#date")
   h2.innerHTML = `<i class="fa-solid fa-house-chimney"></i>Currently in <strong>${response.data.city}</strong>`;
   description.innerHTML = `${response.data.condition.description}`;
   humidity.innerHTML = `${response.data.temperature.humidity}`;
   wind.innerHTML = `${speed} Km/H`;
-  date.innerHTML = "Friday 5:00pm";
-
-  getForecast(response.data);
-  }
+  getForecast(response.data.coordinates);
+}
+function locationNow(position) {
+  let lat = position.coordinates.latitude;
+  let long = position.coordinates.longitude;
+  let apiKey = "827f9a01625aeb3o0572et3c741df379";
+  let url = `https://api.shecodes.io/weather/v1/current?lon=${long}&lat=${lat}&key=${apiKey}`;
+  axios.get(url).then(showTemp);
+}
