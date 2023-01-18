@@ -96,7 +96,10 @@ function showTemp(response) {
   description.innerHTML = `${response.data.condition.description}`;
   humidity.innerHTML = `${response.data.temperature.humidity}`;
   wind.innerHTML = `${speed} Km/H`;
-
+  iconElement.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
   getForecast(response.data.coordinates);
 }
 function locationNow(position) {
