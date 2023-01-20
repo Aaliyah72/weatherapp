@@ -69,10 +69,16 @@ function displayForecast(response) {
         <h5 class="card-title"><strong>${formatDay(
           forecastDay.time
         )}</strong></h5>
-        <p class="card-text">°${Math.round(forecastDay.temperature.day)}
-
-        <i class="fa-solid fa-cloud"></i></p>
-        </div>
+        <p class="card-text"><img 
+src ="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+          forecastDay.condition.icon
+        }.png"
+alt ="" 
+style="width:65px; height:55px"/>°${Math.round(
+          forecastDay.temperature.day
+        )} </p>
+ 
+</div>
         </div>
        </div>`;
     }
@@ -81,14 +87,13 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-displayForecast();
 function showTemp(response) {
   let temperature = Math.round(response.data.temperature.current);
   let temperatureElement = document.querySelector("#dummy-temp");
   let description = document.querySelector("#description");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
-  let iconElement = document.querySelector("#icon-weather");
+  let iconElement = document.querySelector("#icon");
   let speed = Math.round(response.data.wind.speed);
   temperatureElement.innerHTML = `<strong>°${temperature}</strong>`;
   let h2 = document.querySelector("h2");
