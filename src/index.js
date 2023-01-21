@@ -32,6 +32,12 @@ function newCity(event) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityLocation}&key=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(showTemp);
 }
+function search() {
+  let query = "Rochester";
+  let key = "827f9a01625aeb3o0572et3c741df379";
+  let url = `https://api.shecodes.io/weather/v1/current?query=${query}&key=${key}&units=imperial`;
+  axios.get(url).then(showTemp);
+}
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
@@ -113,4 +119,4 @@ function locationNow(coordinates) {
   let url = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}`;
   axios.get(url).then(showTemp);
 }
-
+search("Rochester");
