@@ -74,9 +74,8 @@ src ="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
           forecastDay.condition.icon
         }.png"
 alt ="" 
-style="width:65px; height:55px"/>°${Math.round(
-          forecastDay.temperature.day
-        )} </p>
+style="width:65px; height:55px
+text-align:center"/>°${Math.round(forecastDay.temperature.day)} </p>
  
 </div>
         </div>
