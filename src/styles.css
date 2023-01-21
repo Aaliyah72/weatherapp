@@ -1,13 +1,18 @@
 html {
-  background-image: ;
+  background: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
   border: black;
   margin: 30px auto;
   padding: 20px;
+  display: block;s
+}
+h1{
+  font-size: 30px;
 }
 h2 {
   text-align: center;
   font-family: "Concert One", cursive;
   font-weight: 700, bolder;
+  font-size: 35px;
 }
 
 body {
@@ -19,7 +24,8 @@ body {
 li {
   display: inline-block;
   text-align: center;
-  font-size: 15px;
+  font-size: 17px;
+  margin: auto;
 }
 h3 {
   text-align: center;
@@ -33,7 +39,7 @@ h3 {
 .card {
   margin-right: auto;
   padding: 5px;
-  border: 2px solid #885df1;
+  border: 2px solid cornflowerblue;
   box-shadow: 3px 3px 3px 3px #272044;
 }
 .col-sm-9 {
@@ -45,8 +51,8 @@ hr {
   margin-block-end: auto;
   box-shadow: #272044;
 }
-.text-center {
-  font-size: 20px;
+.container-text-center {
+  font-size: 21px;
   font-weight: 700, bold;
 }
 .container {

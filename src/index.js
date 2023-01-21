@@ -106,10 +106,11 @@ function showTemp(response) {
   );
   getForecast(response.data.coordinates);
 }
-function locationNow(position) {
-  let lat = position.coordinates.latitude;
-  let long = position.coordinates.longitude;
+function locationNow(coordinates) {
+  let longitude = coordinates.longitude;
+  let latitude = coordinates.latitude;
   let apiKey = "827f9a01625aeb3o0572et3c741df379";
-  let url = `https://api.shecodes.io/weather/v1/current?lon=${long}&lat=${lat}&key=${apiKey}`;
+  let url = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}`;
   axios.get(url).then(showTemp);
 }
+navigator.geolocation.getCurrentPosition(locationNow);
