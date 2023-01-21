@@ -113,4 +113,4 @@ function locationNow(coordinates) {
   let url = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}`;
   axios.get(url).then(showTemp);
 }
-navigator.geolocation.getCurrentPosition(locationNow);
+
